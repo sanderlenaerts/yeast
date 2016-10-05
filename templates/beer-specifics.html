@@ -1,0 +1,25 @@
+<div class="content-wrapper">
+  <article id="beer-info" class="segment-content beer-content high-padding">
+
+      <header>
+        <h3 id="beer-name" ng-bind-html="beer.name | sanitize"></h3>
+      </header>
+      <div id="beer-img" class="beer-img-container">
+        <img alt="beer" class="beer-img" ng-src="{{beer.label}}"/>
+      </div>
+      <div id="beer-about" class="beer-about">
+        <p>{{beer.description}}</p>
+      </div>
+      <div id="beer-specifics" class="beer-specifics">
+        <p id="beer-abv">{{beer.abv}}% ABV</p>
+        <p id="beer-origin">{{beer.origin}}</p>
+        <p id="beer-score">8.4/10</p>
+      </div>
+
+      <a ng-hide="!isLoggedIn || (isLoggedIn && added)"  class="review-link" href="/#/review/{{beer._id}}">
+        <button id="beer-btn" type="submit" class="btn-contact" name="name">
+          <i class="fa fa-plus-circle"></i>
+        </button>
+      </a>
+  </article>
+</div>

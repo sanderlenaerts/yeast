@@ -1,0 +1,44 @@
+
+
+
+
+
+          <div class="content-wrapper">
+            <div ng-show="ct.showSuccessMessage" class="toast-popup" >
+                <span>{{ct.success}}</span>
+                <span>
+                  <i ng-click="ct.closePopup()" class="fa fa-times-circle"></i>
+                </span>
+            </div>
+
+            <div class="alert-danger" ng-if="vm.errors">
+              <p ng-repeat="error in vm.errors">
+                {{error.msg}}
+              </p>
+            </div>
+
+            <section id="contact-form" class="contact-form low-padding">
+              <header>
+                <h3>
+                  Create a Yeast! account
+
+                </h3>
+              </header>
+              <form ng-submit="vm.register()">
+                <fieldset>
+                  <label for="name">Name</label>
+                  <input ng-model="vm.credentials.name" id="name" type="name" name="name" placeholder="name">
+
+                  <label for="username">E-mail</label>
+                  <input ng-model="vm.credentials.username" id="username" type="text" name="username" placeholder="E-mail">
+
+                  <label for="password">Password</label>
+                  <input ng-model="vm.credentials.password" id="password" type="password" name="password" placeholder="">
+
+                  <button type="submit" class="btn-contact" name="name">
+                    Create Account
+                  </button>
+                </fieldset>
+              </form>
+            </section>
+          </div>

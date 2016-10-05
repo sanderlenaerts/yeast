@@ -1,0 +1,39 @@
+
+  <div class="container">
+    <aside class="search-engine">
+      <form class="search-box" method="post">
+        <span class="search-icon fa fa-search"></span>
+        <input autofocus="autofocus" ng-model="searchBeers" type="text" name="search" value="" placeholder="Search...">
+
+      </form>
+    </aside>
+
+    <div id="beer-list" class="beer-list">
+      <div ng-hide="filteredBeers.length" class="search-message">
+        <img src="/img/drunk.png" alt="Drunk beerbottle" />
+        <h3>Didn't find any beers that matched your search.</h3>
+      </div>
+
+      <div ng-repeat="beer in filteredBeers = (beers| filter: {name: sanitizeHTML(searchBeers)})" class="beer-display">
+      <div ng-init="added = alreadyAdded(beer.name)">
+
+        <a href="/#/beers/{{beer._id}}">
+          <div class="hover-block">
+            <div class="logo-image">
+              <img ng-src="{{beer.label}}" alt="{{beer.name}} logo" />
+            </div>
+            <h3 ng-bind-html="beer.name | sanitize"></h3>
+          </div>
+        </a>
+        <a ng-show="isLoggedIn" ng-if="added" href="/#/review/{{beer._id}}">
+          <div class="add-button">
+            <i class="fa fa-plus"></i>
+          </div>
+        </a>
+      </div>
+      </div>
+    </div>
+    <div class="clear">
+
+    </div>
+  </div>

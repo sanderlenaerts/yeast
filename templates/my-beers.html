@@ -1,0 +1,35 @@
+
+  <div class="container">
+    <aside class="search-engine">
+      <form class="search-box" method="post">
+        <span class="search-icon fa fa-search"></span>
+        <input autofocus="autofocus" ng-model="query" type="text" name="search" value="" placeholder="Search...">
+
+      </form>
+    </aside>
+
+    <div id="beer-list" class="beer-list">
+      <div ng-hide="reviews.length" class="search-message">
+        <img src="/img/drunk.png" alt="Drunk beerbottle" />
+        <h3>Didn't find any beers that matched your search.</h3>
+      </div>
+
+      <div ng-repeat="review in reviews | filter: search" class="beer-display">
+
+        <a href="/#/beers/{{review.beer._id}}">
+          <div class="hover-block">
+            <div class="logo-image">
+              <img ng-src="{{review.beer.label}}" alt="{{review.beer.name}} logo" />
+            </div>
+            <h3 ng-bind-html="review.beer.name | sanitize"></h3>
+          </div>
+        </a>
+          <div class="add-button">
+            <p>Your score: {{review.score}}</p>
+          </div>
+      </div>
+    </div>
+    <div class="clear">
+
+    </div>
+  </div>

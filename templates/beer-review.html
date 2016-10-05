@@ -1,0 +1,28 @@
+<div class="content-wrapper">
+  <div class="alert-danger" ng-if="errors">
+    <p ng-repeat="error in errors">
+      {{error.msg}}
+    </p>
+  </div>
+  
+  <div id="beer-info" class="segment-content beer-content high-padding">
+      <header>
+        <h3 id="beer-name" ng-bind-html="beer.name | sanitize"></h3>
+      </header>
+      <div id="beer-img" class="beer-img-container">
+        <img alt="beer" class="beer-img" ng-src="{{beer.label}}"/>
+      </div>
+      <div id="beer-review" class="beer-review">
+        <p>You have selected <a id="beer-link" href="/#/beers/{{beer._id}}" ng-bind-html="beer.name | sanitize"></a> to review. Give it a score between 0 and 10 and click add review. The beer will also be added to your beerlist.</p>
+      </div>
+      <div id="beer-score" class="beer-score">
+        <form id="submit-beer" ng-submit="addReview()">
+          <label class="score-display" for="score">{{score}}</label>
+          <input id="score" type="range" name="score" value="5" ng-model="score" min="0" max="10">
+          <button type="submit" class="btn-contact">
+            <i class="fa fa-plus-circle"></i>Add review
+          </button>
+        </form>
+      </div>
+  </div>
+</div>

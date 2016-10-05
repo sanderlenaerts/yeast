@@ -1,0 +1,33 @@
+
+        <div class="content-wrapper">
+          <div ng-show="ct.showSuccessMessage" class="toast-popup" >
+              <span>{{ct.success}}</span>
+              <span>
+                <i ng-click="ct.closePopup()" class="fa fa-times-circle"></i>
+              </span>
+          </div>
+
+          <section id="contact-form" class="contact-form low-padding">
+            <header>
+              <h3>
+                Get in touch
+              </h3>
+            </header>
+            <form ng-submit="ct.sendMail()">
+              <fieldset>
+                <label for="name">Name</label>
+                <input ng-model="ct.mail.name" id="name" type="text" name="name" placeholder="Name">
+
+                <label for="e-mail">Email Address</label>
+                <input ng-model="ct.mail.email" id="e-mail" type="email" name="e-mail" placeholder="E-mail">
+
+                <label for="message">Message</label>
+                <textarea ng-model="ct.mail.message" id="message" name="message"></textarea>
+
+                <button type="submit" class="btn-contact" name="name">
+                  <i class="fa fa-paper-plane"></i>
+                </button>
+              </fieldset>
+            </form>
+          </section>
+        </div>
