@@ -1,3 +1,3 @@
 module.exports = {
-  secret: 'secretkey'
+  secret: process.env.SECRET
 }

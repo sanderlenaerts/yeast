@@ -14,7 +14,7 @@
         <h3>Didn't find any beers that matched your search.</h3>
       </div>
 
-      <div ng-repeat="beer in filteredBeers = (beers| filter: {name: sanitizeHTML(searchBeers)})" class="beer-display">
+      <div dir-paginate="beer in filteredBeers = (beers| filter: {name: sanitizeHTML(searchBeers)}) | itemsPerPage: 1" class="beer-display">
       <div ng-init="added = alreadyAdded(beer.name)">
 
         <a href="/#/beers/{{beer._id}}">
@@ -25,14 +25,17 @@
             <h3 ng-bind-html="beer.name | sanitize"></h3>
           </div>
         </a>
-        <a ng-show="isLoggedIn" ng-if="added" href="/#/review/{{beer._id}}">
+        <a ng-show="isLoggedIn" ng-hide="added" href="/#/review/{{beer._id}}">
           <div class="add-button">
             <i class="fa fa-plus"></i>
           </div>
         </a>
       </div>
       </div>
+
+
     </div>
+    <dir-pagination-controls max-size='5' direction-links="true" boundary-links="true"></dir-pagination-controls>
     <div class="clear">
 
     </div>

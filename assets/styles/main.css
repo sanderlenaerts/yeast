@@ -547,6 +547,34 @@ nav {
   font-size: 2rem;
   color: #EAB05C; }
 
+dir-pagination-controls {
+  margin-top: 30px;
+  width: 100%;
+  text-align: center; }
+  dir-pagination-controls ul {
+    list-style-type: none; }
+    dir-pagination-controls ul li.active {
+      background-color: white;
+      color: #EAB05C; }
+    dir-pagination-controls ul li {
+      background-color: #EAB05C;
+      display: inline-block;
+      border-right: 1px solid white; }
+      dir-pagination-controls ul li:last-child {
+        border-top-right-radius: 5px;
+        border-bottom-right-radius: 5px;
+        border-right: none; }
+      dir-pagination-controls ul li:first-child {
+        border-top-left-radius: 5px;
+        border-bottom-left-radius: 5px; }
+      dir-pagination-controls ul li a {
+        width: 100%;
+        box-sizing: border-box;
+        padding: 10px;
+        display: block;
+        text-decoration: none;
+        color: white; }
+
 @media screen and (min-width: 540px) {
   .main-header {
     display: block; }

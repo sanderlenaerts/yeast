@@ -4,11 +4,13 @@
   "description": "Beer tracker",
   "main": "gulpfile.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "gulp": "gulp",
+    "prod": "gulp prod"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "angular-utils-pagination": "^0.11.1",
     "bcrypt": "^0.8.7",
     "body-parser": "^1.15.2",
     "connect": "^3.5.0",

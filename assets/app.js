@@ -1,4 +1,4 @@
-angular.module('app', ['ngRoute', 'ngSanitize']);
+angular.module('app', ['ngRoute', 'ngSanitize', 'angularUtils.directives.dirPagination']);
 
 angular.module('app')
 .service('BeersService', function($http){

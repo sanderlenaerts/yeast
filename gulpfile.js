@@ -19,7 +19,7 @@ gulp.task('styles', function(){
 })
 
 gulp.task('watch:js', ['js'], function(){
-  gulp.watch('ng/**/*.*.js', ['js']);
+  gulp.watch(['ng/**/*.*.js', 'ng/**/*.js'], ['js']);
 })
 
 gulp.task('watch:css', function(){
@@ -28,4 +28,6 @@ gulp.task('watch:css', function(){
 
 gulp.task('dev', ['watch:css', 'watch:js']);
 
+
+gulp.task('prod', ['js', 'styles']);
 gulp.task('default', ['js', 'styles', 'dev']);

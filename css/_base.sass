@@ -650,6 +650,41 @@ nav
   font-size: 2rem
   color: $primary
 
+dir-pagination-controls
+  margin-top: 30px
+  width: 100%
+  text-align: center
+  ul
+    list-style-type: none
+
+    li.active
+      background-color: white
+      color: $primary
+
+    li
+      background-color: $primary
+      display: inline-block
+      border-right: 1px solid white
+
+
+      &:last-child
+        border-top-right-radius: 5px
+        border-bottom-right-radius: 5px
+        border-right: none
+      &:first-child
+        border-top-left-radius: 5px
+        border-bottom-left-radius: 5px
+
+
+
+      a
+        width: 100%
+        box-sizing: border-box
+        padding: 10px
+        display: block
+        text-decoration: none
+        color: white
+
 @media screen and (min-width: 540px)
   .main-header
     display: block
