@@ -14,7 +14,7 @@
         <h3>Didn't find any beers that matched your search.</h3>
       </div>
 
-      <div dir-paginate="beer in filteredBeers = (beers| filter: {name: sanitizeHTML(searchBeers)}) | itemsPerPage: 1" class="beer-display">
+      <div dir-paginate="beer in filteredBeers = (beers| filter: {name: sanitizeHTML(searchBeers)}) | itemsPerPage: 9" class="beer-display">
       <div ng-init="added = alreadyAdded(beer.name)">
 
         <a href="/#/beers/{{beer._id}}">
