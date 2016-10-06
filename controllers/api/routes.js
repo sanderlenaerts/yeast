@@ -16,6 +16,7 @@ router.get('/beers', ctrlBeers.getBeers);
 router.get('/beers/:id', ctrlBeers.getBeer);
 
 //reviews
+router.post('/review/delete', ctrlReview.deleteReview);
 router.post('/review', ctrlReview.postReview);
 router.post('/reviews', ctrlReview.getReviews);
 

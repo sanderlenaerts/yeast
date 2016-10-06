@@ -18,8 +18,8 @@ angular.module('app')
     }).error(function(err){
       $scope.errors = err;
     }).success(function(msg){
-      //Go to beers page
-      // Show success message
+      $location.path('/reviews')
+      $scope.$emit('successPopup', "Review was added to your list");
     })
   }
 

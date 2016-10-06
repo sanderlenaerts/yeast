@@ -1,5 +1,11 @@
 
   <div class="container">
+    <div ng-show="showSuccessMessage" class="toast-popup" >
+        <span>{{success}}</span>
+        <span>
+          <i ng-click="closePopup()" class="fa fa-times-circle"></i>
+        </span>
+    </div>
     <aside class="search-engine">
       <form class="search-box" method="post">
         <span class="search-icon fa fa-search"></span>

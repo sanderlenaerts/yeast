@@ -102,24 +102,6 @@ angular.module('app')
 .controller('app-controller', function ($scope, $location, UserSvc, $timeout){
   $scope.isLoggedIn = UserSvc.isLoggedIn();
 
-  $scope.alreadyAdded = function(name){
-    console.log('Checking if ' + name + ' in list');
-    // Check if the user already has this beer in their list
-
-    UserSvc.fetchReviews().success(function(reviews){
-      var beers = [];
-
-      for (var i = 0; i < reviews.length; i++){
-        beers.push(reviews[i].beer.name);
-      }
-
-      console.log(beers);
-      console.log(beers.indexOf(name) > 1);
-      return beers.indexOf(name) > 1;
-    });
-
-  }
-
   $scope.logout = function(){
     UserSvc.logout();
     $scope.currentUser = UserSvc.getCurrentUser();
@@ -135,13 +117,12 @@ angular.module('app')
   });
 
   $scope.$on('successPopup', function(_, message){
-    console.log(message);
     $scope.success = message;
     $scope.showSuccessMessage = true;
     $timeout(function() {
       $scope.showSuccessMessage = false;
       $scope.success = "";
-    }, 6000);
+    }, 3000);
   });
 
   $scope.closePopup = function(){
@@ -163,28 +144,10 @@ angular.module('app')
 .controller('BeerSpecificsController', function ($scope, BeersService, UserSvc, $location, $routeParams){
 
 
-  $scope.alreadyAdded = function(name){
-    console.log('Checking if ' + name + ' in list');
-    // Check if the user already has this beer in their list
-
-    UserSvc.fetchReviews().success(function(reviews){
-      var beers = [];
-
-      for (var i = 0; i < reviews.length; i++){
-        beers.push(reviews[i].beer.name);
-      }
-
-      console.log(beers);
-      console.log(beers.indexOf(name) > 1);
-      return beers.indexOf(name) > 1;
-    });
-
-  }
 
   var beerId = $routeParams.beerId;
   BeersService.fetch(beerId).success(function(beer){
     $scope.beer = beer;
-    $scope.added = alreadyAdded(beer.name);
   });
 });
 
@@ -207,7 +170,7 @@ angular.module('app')
 });
 
 angular.module('app')
-.controller('ContactController', function ($scope, $http, $timeout){
+.controller('ContactController', function ($scope, $http, $timeout, UserSvc){
 
   var ct = this;
 
@@ -219,11 +182,13 @@ angular.module('app')
     message: ''
   }
 
+
   ct.closePopup = function(){
     ct.showSuccessMessage = false;
   }
 
   ct.sendMail = function(){
+
     $http.post('/api/mail',
         ct.mail
       )
@@ -271,10 +236,21 @@ angular.module('app')
 });
 
 angular.module('app')
-.controller('MyBeersController', function ($sanitize, $scope, BeersService, UserSvc, $location){
+.controller('MyBeersController', function ($http, $sanitize, $scope, BeersService, UserSvc, $location){
 
   //Set the searchbox value to an empty String
   $scope.query = '';
+
+  $scope.removeReview = function(review){
+    var index = $scope.reviews.indexOf(review);
+    $scope.reviews.splice(index, 1);
+    $http.post('/api/review/delete', {
+      id: review._id
+    }).success(function(msg){
+        $location.path('/reviews');
+        $scope.$emit('successPopup', "Review was successfully deleted");
+    })
+  }
 
   $scope.search = function(item){
     if (!$scope.query || (item.beer.name.toLowerCase().indexOf($scope.query) != -1)){
@@ -288,7 +264,6 @@ angular.module('app')
   }
 
     UserSvc.fetchReviews().success(function(reviews){
-      console.log(reviews);
       $scope.reviews = reviews;
     });
 
@@ -341,8 +316,8 @@ angular.module('app')
     }).error(function(err){
       $scope.errors = err;
     }).success(function(msg){
-      //Go to beers page
-      // Show success message
+      $location.path('/reviews')
+      $scope.$emit('successPopup', "Review was added to your list");
     })
   }
 

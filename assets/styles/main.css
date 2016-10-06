@@ -179,12 +179,17 @@ nav {
       flex-flow: column; }
       .container .beer-list .beer-display .hover-block {
         transition: all 0.175s ease-in-out; }
+        .container .beer-list .beer-display .hover-block p {
+          text-align: center;
+          color: #8f8f8f;
+          padding-bottom: 10px;
+          transition: all 0.175s ease-in-out; }
       .container .beer-list .beer-display .hover-block:hover {
         cursor: pointer;
         background-color: #fbf2e4;
         border-top-left-radius: 5px;
         border-top-right-radius: 5px; }
-        .container .beer-list .beer-display .hover-block:hover h3 {
+        .container .beer-list .beer-display .hover-block:hover h3, .container .beer-list .beer-display .hover-block:hover p {
           color: #f0c689; }
       .container .beer-list .beer-display .logo-image {
         text-align: center;
@@ -262,7 +267,7 @@ nav {
   .navigation li {
     list-style-type: none; }
     .navigation li a {
-      color: #fff;
+      color: #f6dcb6;
       display: block;
       font-size: 1.5rem;
       font-weight: 300;
@@ -270,6 +275,14 @@ nav {
       padding: 20px;
       text-decoration: none;
       text-transform: uppercase; }
+      .navigation li a:hover {
+        cursor: pointer; }
+      .navigation li a:active {
+        color: white; }
+      .navigation li a::after {
+        width: 0%; }
+      .navigation li a div {
+        font-size: 1.5rem; }
   .navigation .selected a {
     font-weight: 700; }
 
@@ -302,6 +315,20 @@ nav {
     transform: rotate(20deg);
     box-sizing: border-box; }
 
+.toast-popup {
+  background-color: #333;
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  padding: 15px 5px; }
+  .toast-popup span {
+    padding: 15px;
+    color: white; }
+    .toast-popup span i {
+      color: white; }
+      .toast-popup span i:hover {
+        cursor: pointer; }
+
 .content-wrapper {
   max-width: 1000px;
   width: 90%;
@@ -312,19 +339,6 @@ nav {
     color: white;
     padding: 15px;
     border-radius: 5px; }
-  .content-wrapper .toast-popup {
-    background-color: #333;
-    position: absolute;
-    top: 15px;
-    right: 15px;
-    padding: 15px 5px; }
-    .content-wrapper .toast-popup span {
-      padding: 15px;
-      color: white; }
-      .content-wrapper .toast-popup span i {
-        color: white; }
-        .content-wrapper .toast-popup span i:hover {
-          cursor: pointer; }
   .content-wrapper .beer-content .beer-img-container img {
     display: block;
     width: 80%;
@@ -520,28 +534,24 @@ nav {
   position: relative;
   float: right;
   right: 0; }
-  .side-login a {
-    position: fixed;
-    top: 20px;
+  .side-login a:hover * {
+    color: white; }
+  .side-login a:hover::after {
+    content: "";
+    display: block;
+    top: 0;
+    height: 0;
+    width: 65%;
+    margin: 0 auto;
+    background: white;
+    position: relative; }
+  .side-login a span {
+    font-size: 1.4rem;
+    padding-right: 10px; }
+  .side-login a i {
+    font-size: 1.7rem;
+    top: 22px;
     right: 32px; }
-    .side-login a:hover * {
-      color: white; }
-    .side-login a:hover::after {
-      content: "";
-      display: block;
-      top: 0;
-      height: 0;
-      width: 65%;
-      margin: 0 auto;
-      background: white;
-      position: relative; }
-    .side-login a span {
-      font-size: 1.4rem;
-      padding-right: 10px; }
-    .side-login a i {
-      font-size: 1.7rem;
-      top: 22px;
-      right: 32px; }
 
 .score-display {
   font-size: 2rem;
@@ -553,9 +563,6 @@ dir-pagination-controls {
   text-align: center; }
   dir-pagination-controls ul {
     list-style-type: none; }
-    dir-pagination-controls ul li.active {
-      background-color: white;
-      color: #EAB05C; }
     dir-pagination-controls ul li {
       background-color: #EAB05C;
       display: inline-block;
@@ -575,17 +582,17 @@ dir-pagination-controls {
         text-decoration: none;
         color: white; }
 
-@media screen and (min-width: 540px) {
+@media screen and (min-width: 680px) {
+  .container .beer-list .beer-display {
+    width: calc(50% - 40px); } }
+
+@media screen and (min-width: 900px) {
   .main-header {
     display: block; }
   .mobile-nav, .navigation {
     display: none; }
   .container {
     margin-top: 0; } }
-
-@media screen and (min-width: 680px) {
-  .container .beer-list .beer-display {
-    width: calc(50% - 40px); } }
 
 @media screen and (min-width: 1080px) {
   .container .beer-list .beer-display {

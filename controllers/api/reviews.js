@@ -4,6 +4,20 @@ var router = require('express').Router();
 var Review = mongoose.model('Review');
 var User = mongoose.model('User');
 
+module.exports.deleteReview = function(req, res, next) {
+  var id = req.body.id;
+
+  console.log(id);
+
+  Review.remove({_id: id}, function(err){
+    if (err){
+      res.status(500).json([{msg: "We were unable to delete the review"}]);
+    }
+    res.status(200).json([{msg: "The review was successfully removed"}]);
+  })
+
+}
+
 module.exports.getReviews = function(req, res, next) {
   var userId = req.body.userId;
 

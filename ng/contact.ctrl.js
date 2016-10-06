@@ -1,5 +1,5 @@
 angular.module('app')
-.controller('ContactController', function ($scope, $http, $timeout){
+.controller('ContactController', function ($scope, $http, $timeout, UserSvc){
 
   var ct = this;
 
@@ -11,11 +11,13 @@ angular.module('app')
     message: ''
   }
 
+
   ct.closePopup = function(){
     ct.showSuccessMessage = false;
   }
 
   ct.sendMail = function(){
+
     $http.post('/api/mail',
         ct.mail
       )

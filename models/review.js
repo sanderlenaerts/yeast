@@ -19,6 +19,13 @@ var review = new mongoose.Schema({
   }
 });
 
+review.pre('remove', function(next){
+  this.model('User').update({},{ $pull: {
+    reviews: this._id} }, {multi: true}, next);
+  this.model('Beer').update({},{ $pull: {
+    reviews: this._id} }, {multi: true}, next);
+});
+
 review.index({ beer: 1, user: 1}, { unique: true });
 
 mongoose.model('Review', review);
