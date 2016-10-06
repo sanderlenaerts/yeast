@@ -31,7 +31,7 @@
             <h3 ng-bind-html="beer.name | sanitize"></h3>
           </div>
         </a>
-        <a ng-show="isLoggedIn" ng-hide="added" href="/#/review/{{beer._id}}">
+        <a ng-hide="!isLoggedIn" ng-hide="added" href="/#/review/{{beer._id}}">
           <div class="add-button">
             <i class="fa fa-plus"></i>
           </div>

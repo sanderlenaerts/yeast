@@ -103,9 +103,11 @@ angular.module('app')
   $scope.isLoggedIn = UserSvc.isLoggedIn();
 
   $scope.logout = function(){
-    UserSvc.logout();
-    $scope.currentUser = UserSvc.getCurrentUser();
-    $scope.isLoggedIn = UserSvc.isLoggedIn();
+    UserSvc.logout().success(function(){
+      $scope.currentUser = null;
+      $scope.isLoggedIn = false;
+    });
+
   }
 
   $scope.success = "";

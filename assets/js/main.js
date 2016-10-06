@@ -23,15 +23,7 @@ $(document).ready(function () {
 
     var code = event.keyCode || event.which;
 
-    // Hit the 'Tab' key to trigger the menu
-    // if (code == '9') {
-    //   $('.js-toggle-menu-button').trigger('click');
-    // }
-   });
-
-
    $(window).on('resize', function(){
-     console.log('Resizing');
       var win = $(this); //this = window
       if (win.width() >= 540) {
         $('#main-content').removeClass('reveal');
